@@ -39,10 +39,11 @@ const register = asyncWrapper(
       return  res.status(201).json({status : "success" , data : {newUser} , data_ar : "تم انشاء حساب جديد"});
     }
 )
-/* ========== Login =========== */
+/* ======================= Login ============================================== */
 const login = asyncWrapper(
     async(req,res , next) =>{
     const {email , password} = req.body;
+    // console.log(req);
     if (!email && !password) {
         const error = appError.create("يرجاء ادخال بريدك الالكتروني و كلمة المرور" , 400 , httpStatus.FAIL );;
         return next(error);                
@@ -51,7 +52,8 @@ const login = asyncWrapper(
     const matchedPassword = await bcrypt.compare(password , findUser.password);
     if (findUser && matchedPassword) {
     const token = await generateJWT({email : findUser.email , id: findUser._id , role : findUser.role});
-    return res.status(200).json({status : "success" , data_en : "logged in success" ,
+    console.log(req.currentUser);
+    return res.status(200).json({status : "success" , role : findUser.role  , data_en : "logged in success" ,
      data_ar : "تم تسجيل الدخول بنجاح" ,token});       
     }
     else{

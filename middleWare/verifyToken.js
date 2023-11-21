@@ -10,7 +10,7 @@ try {
  req.currentUser = currentUser;
  next();
 } catch (error) {
- return res.json('invalid token')
+ return res.json('invalid token');
 } 
 
 }
