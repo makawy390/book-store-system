@@ -66,6 +66,12 @@ const delete_book = asyncWrapper(
    return res.status(200).json({status : httpStatus.SUCCESS ,  data_ar : httpStatus.DELETE_BOOK});
 }
 )
+// const delAll = asyncWrapper(
+//     async(req , res)=>{
+//     const del = await Books.deleteMany();
+// res.json('success');
+// }
+// )
 
 module.exports = {
     addBook,

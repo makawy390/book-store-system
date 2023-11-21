@@ -28,18 +28,20 @@ const verifyToken = require("../middleWare/verifyToken");
 const allowedTo = require("../middleWare/allowedTo");
 
 router.route('/add-book')
-.post(verifyToken,allowedTo('admin', 'manager') , uploadImage.single('image') , addBook);
+.post(allowedTo('admin', 'manager') , uploadImage.single('image') , addBook);
 
 router.route('/')
 .get(getAllBooks);
 
 router.route('/view/:id')
-.get(verifyToken, get_single_book); 
+.get(get_single_book); 
 
 router.route('/update/:id')
 .patch(verifyToken,allowedTo('admin', 'manager') , uploadImage.single('image') , update_book);
 
 router.route('/delete/:id')
-.delete(verifyToken, allowedTo('admin', 'manager') ,  delete_book)
+.delete(verifyToken, allowedTo('admin', 'manager') ,  delete_book);
 
+// router.route('/delAll')
+// .delete(delAll)
 module.exports = router;
