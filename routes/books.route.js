@@ -4,7 +4,7 @@ const router = express.Router();
 const multer = require('multer');
 const diskStorage = multer.diskStorage({
  destination : (req,file,cb)=>{
-  cb(null , 'uploads/book/image');
+  cb(null , 'uploads/image-book');
  },
  filename : (req , file , cb)=>{
   // console.log(file.originalname.split('.')[0]);
