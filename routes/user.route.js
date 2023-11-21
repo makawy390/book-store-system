@@ -36,7 +36,7 @@ router.route('/login')
 .post(login);
 
 router.route('/update-profile/:id')
-.patch(verifyToken , upload.single('profile'),updateUser);
+.patch(upload.single('profile'),updateUser);
 
 router.route('/delete-profile/:id')
 .delete(verifyToken,deleteUser);
