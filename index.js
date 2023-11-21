@@ -6,9 +6,9 @@ const express = require("express");
 const app = express();
 // 4) import to cors library
 const cors = require('cors')
-app.use(cors());
 // 5) app to using express to json
 app.use(express.json());
+app.use(cors());
 // 6) connection To Data base
 const connection_DB = require('./db/mongo_db');
 // 7) Add Router Books
