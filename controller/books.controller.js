@@ -15,7 +15,6 @@ const getAllBooks = async (req , res) =>{
 /* ====================== Add New Book ================================= */
 const addBook = asyncWrapper(
     async(req , res , next)=>{
-        const {title , description , price , link} = req.body;
             const newBook =  new Books({
                 title,
                 description,
@@ -28,7 +27,6 @@ const addBook = asyncWrapper(
             const error = appError.create(httpStatus.MESSAGE , 404 , httpStatus.FAIL );
             return next(error);                  
             }
-            console.log(req.file.filename);
             await newBook.save();
            return res.status(200).json({status : httpStatus.SUCCESS , data : {newBook} , data_ar : httpStatus.ADD_BOOK });
 });
